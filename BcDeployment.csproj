@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BcDeployment</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Packaging">
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>business-central-deployment-tool</ToolCommandName>
+    <PackageId>BusinessCentralDeploymentTool</PackageId>
+    <PackageType>McpServer</PackageType>
+    <Title>Business Central Deployment Tool</Title>
+    <Description>Local MCP server that deploys Business Central per-tenant extensions, inspects installed apps and operations, and downloads AL symbols through the Admin Center API.</Description>
+    <PackageTags>mcp;modelcontextprotocol;ai;copilot;dynamics365;businesscentral;al;deployment;devops</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/mundanebcdev/BusinessCentralDeploymentTool</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/mundanebcdev/BusinessCentralDeploymentTool/blob/main/CHANGELOG.md</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.21.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.11" />
+    <PackageReference Include="ModelContextProtocol" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="tests/**/*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <None Include=".mcp/server.json" Pack="true" PackagePath="/.mcp/" />
+  </ItemGroup>
+
+</Project>

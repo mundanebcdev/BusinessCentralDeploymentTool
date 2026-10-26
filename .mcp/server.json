@@ -1,0 +1,101 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.mundanebcdev/business-central-deployment-tool",
+  "title": "Business Central Deployment Tool",
+  "description": "Deploy Business Central per-tenant extensions, inspect apps and operation details, and download AL symbols.",
+  "version": "1.0.0",
+  "websiteUrl": "https://github.com/mundanebcdev/BusinessCentralDeploymentTool",
+  "repository": {
+    "url": "https://github.com/mundanebcdev/BusinessCentralDeploymentTool",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "nuget",
+      "registryBaseUrl": "https://api.nuget.org/v3/index.json",
+      "identifier": "BusinessCentralDeploymentTool",
+      "version": "1.0.0",
+      "runtimeHint": "dnx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "BC_AUTH_MODE",
+          "description": "Credential type used against the Admin Center API.",
+          "default": "ClientSecret",
+          "choices": [
+            "ClientSecret",
+            "Certificate",
+            "ManagedIdentity"
+          ]
+        },
+        {
+          "name": "BC_TENANT_ID",
+          "description": "Microsoft Entra tenant ID that owns the Business Central environments.",
+          "isRequired": true,
+          "isSecret": false,
+          "format": "string"
+        },
+        {
+          "name": "BC_CLIENT_ID",
+          "description": "Microsoft Entra application (client) ID.",
+          "isRequired": true,
+          "isSecret": false,
+          "format": "string"
+        },
+        {
+          "name": "BC_CLIENT_SECRET",
+          "description": "Client secret for the Entra application. Omit when using certificate or managed identity auth.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "BC_CLIENT_CERTIFICATE_PATH",
+          "description": "Path to a PFX certificate used instead of a client secret.",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "filepath"
+        },
+        {
+          "name": "BC_CLIENT_CERTIFICATE_PASSWORD",
+          "description": "Optional password protecting the PFX certificate.",
+          "isRequired": false,
+          "isSecret": true
+        },
+        {
+          "name": "BC_ALLOWED_APP_ROOTS",
+          "description": "Path-separated directories the server may read .app and .zip packages from.",
+          "isRequired": true,
+          "isSecret": false,
+          "format": "filepath"
+        },
+        {
+          "name": "BC_ALLOWED_SYMBOL_ROOTS",
+          "description": "Path-separated directories the server may write downloaded AL symbols to.",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "filepath"
+        },
+        {
+          "name": "BC_ALLOW_PRODUCTION_DEPLOYMENT",
+          "description": "Set to true to permit deployments to Production environments. Defaults to false.",
+          "isRequired": false,
+          "isSecret": false,
+          "default": "false",
+          "choices": [
+            "false",
+            "true"
+          ]
+        },
+        {
+          "name": "BC_DEPLOYMENT_JOURNAL_DIRECTORY",
+          "description": "Directory for the JSON Lines deployment recovery journal.",
+          "isRequired": false,
+          "isSecret": false,
+          "format": "filepath"
+        }
+      ]
+    }
+  ]
+}

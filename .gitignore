@@ -1,0 +1,46 @@
+# Build output
+bin/
+obj/
+artifacts/
+*.user
+*.suo
+
+# Test results
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+coverage*.json
+coverage*.xml
+
+# NuGet
+*.nupkg
+*.snupkg
+
+# Runtime state
+.bcdeployment/
+
+# Secrets - never commit these
+*.pfx
+*.p12
+*.pem
+*.key
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+
+# IDE
+.vs/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Internal request notes
+docs/requests/

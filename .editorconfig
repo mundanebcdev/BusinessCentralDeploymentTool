@@ -1,0 +1,94 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_style = space
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{json,yml,yaml,md,ps1,csproj,props,targets,slnx}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.cs]
+# Namespaces and usings
+csharp_style_namespace_declarations = file_scoped:error
+dotnet_sort_system_directives_first = true
+csharp_using_directive_placement = outside_namespace:suggestion
+
+# var
+csharp_style_var_for_built_in_types = true:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = true:suggestion
+
+# Modern C# syntax
+csharp_style_expression_bodied_methods = when_on_single_line:suggestion
+csharp_style_expression_bodied_properties = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
+csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_prefer_switch_expression = true:suggestion
+csharp_style_prefer_primary_constructors = true:suggestion
+csharp_style_prefer_range_operator = true:suggestion
+csharp_prefer_simple_using_statement = true:suggestion
+csharp_prefer_braces = true:error
+dotnet_style_collection_initializer = true:suggestion
+dotnet_style_object_initializer = true:suggestion
+dotnet_style_prefer_conditional_expression_over_assignment = true:suggestion
+dotnet_style_null_propagation = true:suggestion
+dotnet_style_coalesce_expression = true:suggestion
+
+# Accessibility and immutability
+dotnet_style_require_accessibility_modifiers = for_non_interface_members:error
+dotnet_style_readonly_field = true:suggestion
+csharp_prefer_static_local_function = true:suggestion
+
+# this.
+dotnet_style_qualification_for_field = false:error
+dotnet_style_qualification_for_property = false:error
+dotnet_style_qualification_for_method = false:error
+dotnet_style_qualification_for_event = false:error
+
+# Naming: interfaces are IPascalCase
+dotnet_naming_rule.interfaces_start_with_i.severity = error
+dotnet_naming_rule.interfaces_start_with_i.symbols = interface_symbol
+dotnet_naming_rule.interfaces_start_with_i.style = i_prefix_style
+dotnet_naming_symbols.interface_symbol.applicable_kinds = interface
+dotnet_naming_style.i_prefix_style.required_prefix = I
+dotnet_naming_style.i_prefix_style.capitalization = pascal_case
+
+# Naming: constants are PascalCase, regardless of accessibility
+dotnet_naming_rule.constants_pascal.severity = error
+dotnet_naming_rule.constants_pascal.symbols = constant_symbol
+dotnet_naming_rule.constants_pascal.style = pascal_style
+dotnet_naming_symbols.constant_symbol.applicable_kinds = field
+dotnet_naming_symbols.constant_symbol.applicable_accessibilities = *
+dotnet_naming_symbols.constant_symbol.required_modifiers = const
+
+# Naming: static readonly fields are PascalCase
+dotnet_naming_rule.static_readonly_pascal.severity = error
+dotnet_naming_rule.static_readonly_pascal.symbols = static_readonly_symbol
+dotnet_naming_rule.static_readonly_pascal.style = pascal_style
+dotnet_naming_symbols.static_readonly_symbol.applicable_kinds = field
+dotnet_naming_symbols.static_readonly_symbol.applicable_accessibilities = *
+dotnet_naming_symbols.static_readonly_symbol.required_modifiers = static,readonly
+
+# Naming: private instance fields are _camelCase
+dotnet_naming_rule.private_fields_underscore.severity = error
+dotnet_naming_rule.private_fields_underscore.symbols = private_field_symbol
+dotnet_naming_rule.private_fields_underscore.style = underscore_camel_style
+dotnet_naming_symbols.private_field_symbol.applicable_kinds = field
+dotnet_naming_symbols.private_field_symbol.applicable_accessibilities = private
+dotnet_naming_style.underscore_camel_style.required_prefix = _
+dotnet_naming_style.underscore_camel_style.capitalization = camel_case
+
+# Naming: everything else public is PascalCase
+dotnet_naming_rule.public_members_pascal.severity = error
+dotnet_naming_rule.public_members_pascal.symbols = public_symbol
+dotnet_naming_rule.public_members_pascal.style = pascal_style
+dotnet_naming_symbols.public_symbol.applicable_kinds = property,method,field,event,delegate,class,struct,enum,interface
+dotnet_naming_symbols.public_symbol.applicable_accessibilities = public,internal,protected
+dotnet_naming_style.pascal_style.capitalization = pascal_case

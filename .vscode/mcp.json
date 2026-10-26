@@ -1,0 +1,47 @@
+{
+  "servers": {
+    "bc-deployment": {
+      "type": "stdio",
+      "command": "dotnet",
+      "args": [
+        "run",
+        "--project",
+        "${workspaceFolder}/BcDeployment.csproj"
+      ],
+      "env": {
+        "BC_AUTH_MODE": "ClientSecret",
+        "BC_TENANT_ID": "${input:bc-deployment-tenant-id}",
+        "BC_CLIENT_ID": "${input:bc-deployment-client-id}",
+        "BC_CLIENT_SECRET": "${input:bc-deployment-client-secret}",
+        "BC_ALLOWED_APP_ROOTS": "${workspaceFolder}",
+        "BC_ALLOWED_SYMBOL_ROOTS": "${input:bc-deployment-symbol-roots}",
+        "BC_ALLOW_PRODUCTION_DEPLOYMENT": "false",
+        "BC_DEPLOYMENT_JOURNAL_DIRECTORY": "${workspaceFolder}/.bcdeployment/journal"
+      }
+    }
+  },
+  "inputs": [
+    {
+      "id": "bc-deployment-tenant-id",
+      "type": "promptString",
+      "description": "Microsoft Entra tenant ID for Business Central"
+    },
+    {
+      "id": "bc-deployment-client-id",
+      "type": "promptString",
+      "description": "Microsoft Entra application client ID"
+    },
+    {
+      "id": "bc-deployment-client-secret",
+      "type": "promptString",
+      "description": "Microsoft Entra application client secret",
+      "password": true
+    },
+    {
+      "id": "bc-deployment-symbol-roots",
+      "type": "promptString",
+      "description": "Allowed AL symbol cache roots, separated by ';' on Windows or ':' elsewhere",
+      "default": "${workspaceFolder}/.bcdeployment/symbols"
+    }
+  ]
+}

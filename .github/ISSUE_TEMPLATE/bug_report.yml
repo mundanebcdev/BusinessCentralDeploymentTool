@@ -1,0 +1,96 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report.
+
+        **Never paste tenant IDs, client IDs, secrets, certificates, access tokens,
+        or customer data.** Redact them before submitting.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you observe, and what did you expect instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: The tool you called, the arguments you used, and the result.
+      placeholder: |
+        1. Started the server with ...
+        2. Called `bc_deploy_pte` with ...
+        3. Got ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: tool
+    attributes:
+      label: Which tool is affected?
+      options:
+        - bc_list_environments
+        - bc_get_app_details
+        - bc_download_symbol
+        - bc_deploy_pte
+        - Server startup / configuration
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: Package version, or the commit you built from.
+      placeholder: '1.0.0'
+    validations:
+      required: true
+
+  - type: input
+    id: dotnet
+    attributes:
+      label: .NET SDK version
+      description: Output of `dotnet --version`.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - Linux
+        - macOS
+    validations:
+      required: true
+
+  - type: input
+    id: client
+    attributes:
+      label: MCP client
+      placeholder: 'VS Code 1.x, Visual Studio, Claude Desktop, ...'
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Server stderr output. This is rendered as code, no backticks needed.
+      render: text
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I removed all credentials, tenant identifiers, and customer data from this report.
+          required: true
+        - label: I searched existing issues for a duplicate.
+          required: true

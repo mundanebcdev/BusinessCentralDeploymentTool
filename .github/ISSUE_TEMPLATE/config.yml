@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/mundanebcdev/BusinessCentralDeploymentTool/security/advisories/new
+    about: Report security issues privately. Do not open a public issue.
+  - name: Question or idea
+    url: https://github.com/mundanebcdev/BusinessCentralDeploymentTool/discussions
+    about: Ask how something works or discuss an approach before filing an issue.
+  - name: Business Central Admin Center API
+    url: https://learn.microsoft.com/dynamics365/business-central/dev-itpro/administration/administration-center-api
+    about: Questions about the underlying Microsoft API belong with Microsoft.
