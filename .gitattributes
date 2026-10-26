@@ -1,7 +1,7 @@
 # Normalize line endings on commit, check out native line endings.
 * text=auto
 
-*.cs text diff=csharp
+*.cs text eol=crlf diff=csharp
 *.csproj text eol=crlf
 *.props text eol=crlf
 *.targets text eol=crlf
